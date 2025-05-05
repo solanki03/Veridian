@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veridian</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veridian - Grow Your Future</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <section></section>
+    <main class="container">
+        <!-- Section 1: Header (Top) -->
+        <header class="header-section">
+            <h2>Veridian</h2>
+            <span>Grow Your Future</span>
+        </header>
+
+        <!-- Section 2: Main Content (Middle) -->
+        <div class="main-content">
+            <!-- Left Section: Canvas + Quote -->
+            <div class="left-section">
+                <canvas id="lifeClock" width="300" height="300"></canvas>
+                <p id="quote">"Loading quote..."</p>
+            </div>
+
+            <!-- Right Section: Time, Weather, Search -->
+            <div class="right-section">
+                <div class="datetime-weather">
+                    <div id="timeDisplay">
+                        <h3 id="time">00:00</h3>
+                        <p id="date">Loading date...</p>
+                    </div>
+
+                    <div class="weather-widget">
+                        <h3>Weather</h3>
+                        <p>Location: City, Country</p>
+                        <p>Temperature: 25°C</p>
+                        <p>Condition: Sunny</p>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search..." />
+                    <button id="searchBtn">🔍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Shortcuts (Bottom Center) -->
+        <div class="shortcuts-section">
+            <div class="shortcuts" id="shortcutsContainer">
+                <!-- Shortcuts will go here -->
+                <!-- Example: <a href="https://mail.google.com" target="_blank">Gmail</a> -->
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
