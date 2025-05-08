@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="icons/star-logo.png" />
     <title>Veridian - Grow Your Future</title>
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,6 +15,8 @@
         <header class="header-section">
             <h2>Veridian</h2>
             <span>Grow Your Future</span>
+            <button id="resetGoalYear" class="reset-btn">Reset Goal Year</button>
+
         </header>
 
         <!-- Section 2: Main Content (Middle) -->
@@ -21,41 +24,64 @@
             <!-- Left Section: Canvas + Quote -->
             <div class="left-section">
                 <canvas id="lifeClock" width="300" height="300"></canvas>
-                <p id="quote">"Loading quote..."</p>
+                <p id="timeLeft" class="time-left"></p>
+                <div id="legend" class="legend"></div>
+                <p class="quote-card" id="quote">"Loading quote..."</p>
             </div>
 
             <!-- Right Section: Time, Weather, Search -->
             <div class="right-section">
                 <div class="datetime-weather">
-                    <div id="timeDisplay">
+                    <div class="time-display" id="timeDisplay">
                         <h3 id="time">00:00</h3>
                         <p id="date">Loading date...</p>
                     </div>
 
                     <div class="weather-widget">
-                        <h3>Weather</h3>
-                        <p>Location: City, Country</p>
-                        <p>Temperature: 25°C</p>
-                        <p>Condition: Sunny</p>
+                        <div class="location-icon">
+                            <img src="icons/location.png" alt="Location" />
+                            <p>City, Country</p>
+                        </div>
+                        <div class="temperature-icon">
+                            <img src="icons/temperature.png" alt="Location" />
+                            <p>25°C</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search..." />
-                    <button id="searchBtn">🔍</button>
+                    <input type="text" id="searchInput" class="input" name="text" placeholder="Search..." />
+                    <button id="searchBtn" class="search-btn">
+                        <img src="icons/search.png" alt="Search-Icon" />
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: Shortcuts (Bottom Center) -->
-        <div class="shortcuts-section">
-            <div class="shortcuts" id="shortcutsContainer">
+        <!-- Section 3: Socials Tab (Bottom) -->
+        <div class="socials-section">
+            <div class="socials" id="socialsContainer">
                 <!-- Shortcuts will go here -->
-                <!-- Example: <a href="https://mail.google.com" target="_blank">Gmail</a> -->
+                <a href="https://www.gmail.com" target="_blank" class="social-link">
+                    <div class="social-icon" title="Gmail">
+                        <img src="icons/mail.png" alt="Gmail" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Goal Year Modal -->
+        <div id="goalModal" class="modal-overlay hidden">
+            <div class="modal">
+                <h2>Set Your Goal Year</h2>
+                <p>By what year do you want to achieve your goals?</p>
+                <input type="number" id="goalYearInput" min="2025" max="2100" placeholder="e.g., 2030" />
+                <button id="saveGoalYear">Save</button>
             </div>
         </div>
     </main>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
