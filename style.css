@@ -202,8 +202,8 @@ body {
     background-size: cover;
 }
 
-/* ----- Section 3: Socials ----- */
-.socials-section {
+/* ----- Section 3: shortcuts ----- */
+.shortcuts-section {
     grid-area: shortcuts-section;
     position: fixed;
     bottom: 2.5rem;
@@ -213,14 +213,14 @@ body {
     z-index: 100;
 }
 
-.socials-section>.socials {
+.shortcuts-section .shortcuts-container {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.socials .social-icon {
+.shortcuts-container .shortcut-icon {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -229,12 +229,12 @@ body {
     text-align: center;
 }
 
-.socials .social-icon:hover {
+.shortcuts-container .shortcut-icon:hover {
     transform: translateY(-5px);
 }
 
 /* Tooltip styling */
-.socials .social-icon:hover::after {
+.shortcuts-container .shortcut-icon:hover::after {
     content: attr(title);
     position: absolute;
     bottom: -1.8rem;
@@ -252,12 +252,12 @@ body {
     z-index: 10;
 }
 
-.socials .social-icon::after {
+.shortcuts-container .shortcut-icon::after {
     content: '';
     opacity: 0;
 }
 
-.socials .social-icon img {
+.shortcuts-container .shortcut-icon img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -267,7 +267,7 @@ body {
 }
 
 /* ----- Goal Year Modal ----- */
-.container>.modal-overlay {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
