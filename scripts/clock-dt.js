@@ -52,14 +52,13 @@ startDate = new Date(startDate);
 // Check for goal year BEFORE defaulting
 const modal = document.getElementById("goalModal");
 const justUpdated = localStorage.getItem("veridianJustUpdatedGoal");
-console.log("Just updated goal:", justUpdated);
+
 let storedGoalYear;
 if (justUpdated) {
     localStorage.removeItem("veridianJustUpdatedGoal");
     modal.classList.remove("hidden");
 } else {
     storedGoalYear = localStorage.getItem("veridianGoalYear");
-    console.log("Stored goal year:", storedGoalYear);
     if(!storedGoalYear && modal) {
         modal.classList.remove("hidden");
         showModal();
@@ -67,7 +66,6 @@ if (justUpdated) {
 }
 
 let goalYear = parseInt(storedGoalYear) || new Date().getFullYear();
-console.log("Goal year:", goalYear);
 const endDate = new Date(`${goalYear}-12-31T23:59:59`);
 
 
