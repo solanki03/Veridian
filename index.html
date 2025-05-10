@@ -7,25 +7,36 @@
     <link rel="icon" type="image/svg+xml" href="icons/star-logo.png" />
     <title>Veridian - Grow Your Future</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
     <main class="container">
         <!-- Section 1: Header (Top) -->
-        <header class="header-section">
-            <h2>Veridian</h2>
-            <span>Grow Your Future</span>
-            <button id="resetGoalYear" class="reset-btn">Reset Goal Year</button>
-        </header>
+        <div class="header-section">
+            <i class="ri-list-check-2" title="ToDo List"></i>
+        </div>
 
         <!-- Section 2: Main Content (Middle) -->
         <div class="main-content">
             <!-- Left Section: Canvas + Quote -->
             <div class="left-section">
                 <canvas id="lifeClock" width="300" height="300"></canvas>
+                <div class="reset-btn-wrapper">
+                    <button id="resetGoalYear" class="reset-btn">
+                    <i class="ri-refresh-line"></i>
+                    Reset Goal
+                </button>
+                </div>
+
                 <p id="timeLeft" class="time-left"></p>
                 <div id="legend" class="legend"></div>
-                <p class="quote-card" id="quote">"Loading quote..."</p>
+                <p class="quote-card">
+                    <i class="ri-single-quotes-l"></i>
+                    <span id="quote" class="quote-text">loading...</span>
+                    <i class="ri-single-quotes-r"></i>
+                </p>
             </div>
 
             <!-- Right Section: Time, Weather, Search -->
@@ -38,11 +49,11 @@
 
                     <div class="weather-widget">
                         <div class="location-icon">
-                            <img src="icons/location.png" alt="Location" />
-                            <p>City, Country</p>
+                            <i class="ri-map-pin-fill"></i>
+                            <p>City</p>
                         </div>
                         <div class="temperature-icon">
-                            <img src="icons/temperature.png" alt="Location" />
+                            <i class="ri-temp-hot-fill"></i>
                             <p>25°C</p>
                         </div>
                     </div>
@@ -51,7 +62,7 @@
                 <div class="search-bar">
                     <input type="text" id="searchInput" class="input" name="text" placeholder="Search..." />
                     <button id="searchBtn" class="search-btn">
-                        <img src="icons/search.png" alt="Search-Icon" />
+                        <i class="ri-search-line"></i>
                     </button>
                 </div>
             </div>
@@ -59,14 +70,7 @@
 
         <!-- Section 3: Shortcuts Tab (Bottom) -->
         <div class="shortcuts-section">
-            <div id="shortcuts" class="shortcuts-container">
-                <!-- Shortcuts will go here -->
-                <a href="https://www.gmail.com" target="_blank" class="shortcut-link">
-                    <div class="shortcut-icon" title="Gmail">
-                        <img src="icons/mail.png" alt="Gmail" />
-                    </div>
-                </a>
-            </div>
+            <div id="shortcuts" class="shortcuts-container"></div>
         </div>
 
         <!-- Goal Year Modal -->
@@ -81,7 +85,6 @@
     </main>
 
     <!-- Scripts -->
-    <!-- <script src="scripts/clock-dt.js"></script> -->
     <script src="scripts/clock.js"></script>
     <script src="scripts/quotes.js"></script>
     <script type="module" src="scripts/canvas.js"></script>

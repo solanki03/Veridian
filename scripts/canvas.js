@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         endDate = new Date(`${new Date().getFullYear()}-12-31T23:59:59`);
     }
 
-    handleGoalYear(endDate);
+    // handleGoalYear(endDate);
     setupModalEvents(endDate);
     drawLifeClock(canvas, ctx, startDate, endDate, RINGS);
     generateLegend(RINGS);
@@ -116,12 +116,10 @@ function updateTimeLeftDisplay(endDate) {
 // handle goal year modal
 function handleGoalYear(endDate) {
     const storedGoalYear = localStorage.getItem("veridianGoalYear");
-    console.log("Stored goal year:", storedGoalYear);
+
     if (!storedGoalYear) {
-        console.log("No goal year found. Showing modal.");
         showModal();
     } else {
-        console.log("Goal year found. Hiding modal.");
         // Set the goal year from storage
         endDate.setFullYear(parseInt(storedGoalYear));
         updateTimeLeftDisplay(endDate);
