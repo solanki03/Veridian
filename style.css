@@ -8,14 +8,18 @@
 :root {
     --dark-blue: #0f172a;
     --powder-blue: #60a5fa;
+    --powder-blue-dark: #2084ff;
     --light-blue: #8eb7e0;
-    --lighter-blue: #94a3b8;
+    --slate: #94a3b8;
     --glassmorphism: rgba(255, 255, 255, 0.05);
     --glassmorphism-border: rgba(255, 255, 255, 0.1);
     --glassmorphism-shadow: rgba(0, 0, 0, 0.2);
     --modal-overlay: rgba(0, 0, 0, 0.6);
     --modal-bg: #141e35;
     --icon-bg: #2d3b4f;
+    --card-bg: #334155;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
 }
 
 body {
@@ -49,13 +53,18 @@ a { text-decoration: none; }
     margin-top: 1rem;
 }
 
-.header-section i {
-    font-size: 1.5rem;
+.header-section .todo-btn {
+    display: flex;
+    align-items: center;
     color: var(--powder-blue);
-    padding: 0.5rem;
+    padding: 0.4rem 0.5rem;
     border-radius: 20%;
     background-color: var(--icon-bg);
     cursor: pointer;
+}
+
+.header-section .todo-btn i {
+    font-size: 1.5rem;
 }
 
 /* ----- Section 2: Main Content ----- */
@@ -66,6 +75,7 @@ a { text-decoration: none; }
     justify-content: space-evenly;
     justify-items: center;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 /* -- Left Section -- */
@@ -127,7 +137,7 @@ a { text-decoration: none; }
     display: flex;
     align-items: center;
     gap: 5px;
-    color: var(--lighter-blue);
+    color: var(--slate);
 }
 
 .dot {
@@ -140,6 +150,7 @@ a { text-decoration: none; }
 .left-section .quote-card {
     font-style: italic;
     font-weight: 400;
+    text-align: center;
     background: var(--glassmorphism);
     padding: 01rem 1.5rem;
     border-radius: 30px;
@@ -194,7 +205,7 @@ a { text-decoration: none; }
 
 .right-section .datetime-weather .time-display p {
     font-size: 1.2rem;
-    color: var(--lighter-blue);
+    color: var(--slate);
     margin-top: 0.2rem;
     font-weight: 500;
 }
@@ -214,6 +225,37 @@ a { text-decoration: none; }
     justify-content: center;
 }
 
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-end;
+}
+
+.search-dropdown-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--slate); 
+}
+
+.search-engine-dropdown {
+    padding: 0.3rem 0.7rem;
+    background-color: #0f172a; 
+    color: #e2e8f0; 
+    border: 1.5px solid var(--powder-blue); 
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.search-engine-dropdown:hover,
+.search-engine-dropdown:focus {
+    background-color: #1e293b; 
+    border-color: var(--light-blue)
+}
+
 .right-section .search-bar {
     display: flex;
     align-items: center;
@@ -226,7 +268,7 @@ a { text-decoration: none; }
     box-shadow: 0 2px 6px var(--glassmorphism-shadow);
     transition: all 0.3s ease;
     margin-top: 1rem;
-    max-width: 100%;
+    max-width: 100%; 
 }
 
 .right-section .search-bar input.input {
@@ -235,20 +277,20 @@ a { text-decoration: none; }
     outline: none;
     color: #e2e8f0;
     font-size: 1rem;
-    width: 200px;
+    width: 80%;
     padding: 0.5rem 0;
     flex: 1;
 }
 
 .right-section .search-bar input.input::placeholder {
-    color: var(--lighter-blue);
+    color: var(--slate);
 }
 
 .right-section .search-bar .search-btn {
-    background-color: var(--light-blue);
+    background-color: var(--powder-blue);
     border: none;
     border-radius: 50%;
-    padding: 0.2rem;
+    padding: 0.1rem;
     color: var(--dark-blue);
     cursor: pointer;
     display: flex;
@@ -267,7 +309,7 @@ a { text-decoration: none; }
 }
 
 .right-section .search-bar .search-btn:hover {
-    background-color: var(--powder-blue);
+    background-color: var(--powder-blue-dark);
 }
 
 /* ----- Section 3: shortcuts ----- */
@@ -383,10 +425,6 @@ a { text-decoration: none; }
     font-weight: 600;
 }
 
-.hidden {
-    display: none;
-}
-
 #goalModal.fade-in {
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
@@ -396,4 +434,127 @@ a { text-decoration: none; }
 #goalModal.fade-out {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+}
+
+/* ----- To-Do List Floating Panel ----- */
+.todo-panel {
+    position: absolute;
+    top: 5rem; 
+    left: 2rem;
+    width: 300px;
+    background-color: var(--modal-bg);  
+    border-radius: 1.5rem;
+    padding: 1rem;
+    z-index: 100;
+    box-shadow: 0 4px 20px var(--glassmorphism-shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--glassmorphism-border);
+}
+
+.hidden {
+    display: none;
+}
+
+.todo-panel h3 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.todo-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--card-bg);
+    padding: 0.4rem;
+    border-radius: 2rem;
+}
+
+#todoInput {
+    flex: 1;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 1rem;
+    background: transparent;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+#todoForm button {
+    background-color: var(--powder-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#todoForm button:hover {
+    background-color: var(--powder-blue-dark);
+}
+
+#todoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.6rem;
+    margin-top: 0.6rem;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex: 1;
+    cursor: pointer;
+}
+
+.todo-radio {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--light-blue);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.todo-text {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: all 0.3s;
+}
+
+.todo-radio:checked::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: var(--powder-blue);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.delete-task {
+    color: var(--light-blue);
+    font-size: 1rem;
+    cursor: pointer;
 }

@@ -15,7 +15,9 @@
     <main class="container">
         <!-- Section 1: Header (Top) -->
         <div class="header-section">
-            <i class="ri-list-check-2" title="ToDo List"></i>
+            <span id="todoBtn" class="todo-btn">
+                <i class="ri-list-check-2" title="To-Do List"></i>
+            </span>
         </div>
 
         <!-- Section 2: Main Content (Middle) -->
@@ -25,9 +27,9 @@
                 <canvas id="lifeClock" width="300" height="300"></canvas>
                 <div class="reset-btn-wrapper">
                     <button id="resetGoalYear" class="reset-btn">
-                    <i class="ri-refresh-line"></i>
-                    Reset Goal
-                </button>
+                        <i class="ri-refresh-line"></i>
+                        Reset Goal
+                    </button>
                 </div>
 
                 <p id="timeLeft" class="time-left"></p>
@@ -50,21 +52,48 @@
                     <div class="weather-widget">
                         <div class="location-icon">
                             <i class="ri-map-pin-fill"></i>
-                            <p>City</p>
+                            <p id="location">City</p>
                         </div>
                         <div class="temperature-icon">
                             <i class="ri-temp-hot-fill"></i>
-                            <p>25°C</p>
+                            <p id="temperature">25°C</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="search-bar">
+                <!-- <div class="search-bar">
+                    <select id="searchEngine" class="search-engine-dropdown">
+                        <option value="google">Google</option>
+                        <option value="bing">Bing</option>
+                        <option value="brave">Brave</option>
+                        <option value="duckduckgo">DuckDuckGo</option>
+                        <option value="yahoo">Yahoo</option>
+                    </select>
+
                     <input type="text" id="searchInput" class="input" name="text" placeholder="Search..." />
                     <button id="searchBtn" class="search-btn">
                         <i class="ri-search-line"></i>
                     </button>
+                </div> -->
+
+                <div class="search-wrapper">
+                    <div class="search-dropdown-label">
+                        <label for="searchEngine">Search with</label>
+                        <select id="searchEngine" class="search-engine-dropdown">
+                            <option value="google">Google</option>
+                            <option value="duckduckgo">DuckDuckGo</option>
+                            <option value="bing">Bing</option>
+                            <option value="brave">Brave</option>
+                        </select>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" class="input" placeholder="Search..." />
+                        <button id="searchBtn" class="search-btn">
+                            <i class="ri-search-line"></i>
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -82,6 +111,20 @@
                 <button id="saveGoalYear">Save</button>
             </div>
         </div>
+
+        <!-- To-Do Panel -->
+        <div id="todoPanel" class="todo-panel hidden">
+            <h3>To Do List</h3>
+            <form id="todoForm">
+                <div class="todo-input-wrapper">
+                    <input type="text" id="todoInput" placeholder="Add task..." required />
+                    <button type="submit" title="Add Task">+</button>
+                </div>
+            </form>
+            <ul id="todoList">
+            </ul>
+        </div>
+
     </main>
 
     <!-- Scripts -->
@@ -90,5 +133,10 @@
     <script type="module" src="scripts/canvas.js"></script>
     <script type="module" src="scripts/modal.js"></script>
     <script src="scripts/shortcuts.js"></script>
+    <script type="module" src="scripts/weatherData.js"></script>
+    <script type="module" src="scripts/config.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/todo.js"></script>
 </body>
+
 </html>
