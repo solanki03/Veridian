@@ -20,6 +20,7 @@
     --card-bg: #334155;
     --text-primary: #ffffff;
     --text-secondary: #cbd5e1;
+    --button-bg: #7da0fa;
 }
 
 body {
@@ -41,7 +42,9 @@ body {
     padding: 1rem 2rem;
 }
 
-a { text-decoration: none; }
+a {
+    text-decoration: none;
+}
 
 /* ----- Section 1: Header ----- */
 .container .header-section {
@@ -54,17 +57,71 @@ a { text-decoration: none; }
 }
 
 .header-section .todo-btn {
-    display: flex;
-    align-items: center;
-    color: var(--powder-blue);
-    padding: 0.4rem 0.5rem;
-    border-radius: 20%;
+    position: fixed;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 100;
     background-color: var(--icon-bg);
+    color: var(--powder-blue);
+    border: none;
+    border-radius: 20%;
+    padding: 0.4rem 0.5rem;
     cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 0 8px var(--glassmorphism-shadow);
 }
 
-.header-section .todo-btn i {
+.header-section .pomodoro-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 100;
+    background-color: var(--icon-bg);
+    color: var(--powder-blue);
+    border: none;
+    border-radius: 20%;
+    padding: 0.4rem 0.5rem;
+    cursor: pointer;
     font-size: 1.5rem;
+    box-shadow: 0 0 8px var(--glassmorphism-shadow);
+}
+
+.header-section .todo-btn:hover::after{
+    content: attr(title);
+    position: absolute;
+    left: -1rem;
+    bottom: -1.8rem;
+    background-color: #1e293b;
+    color: #f1f5f9;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    transform: translateY(5px);
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 200;
+}
+
+.header-section .pomodoro-toggle:hover::after {
+    content: attr(title);
+    position: absolute;
+    right: -1rem;
+    bottom: -1.8rem;
+    background-color: #1e293b;
+    color: #f1f5f9;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    transform: translateY(5px);
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 200;
 }
 
 /* ----- Section 2: Main Content ----- */
@@ -92,7 +149,7 @@ a { text-decoration: none; }
     background-color: transparent;
 }
 
-.left-section .reset-btn-wrapper{
+.left-section .reset-btn-wrapper {
     text-align: center;
 }
 
@@ -188,7 +245,9 @@ a { text-decoration: none; }
     gap: 1rem;
 }
 
-.time-display, .location-icon, .temperature-icon {
+.time-display,
+.location-icon,
+.temperature-icon {
     background: var(--glassmorphism);
     border: 1px solid var(--glassmorphism-border);
     border-radius: 20px;
@@ -218,7 +277,8 @@ a { text-decoration: none; }
     padding: 1rem 2rem;
 }
 
-.weather-widget .location-icon, .weather-widget .temperature-icon {
+.weather-widget .location-icon,
+.weather-widget .temperature-icon {
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -237,14 +297,14 @@ a { text-decoration: none; }
     align-items: center;
     gap: 0.5rem;
     font-size: 0.8rem;
-    color: var(--slate); 
+    color: var(--slate);
 }
 
 .search-engine-dropdown {
     padding: 0.3rem 0.7rem;
-    background-color: #0f172a; 
-    color: #e2e8f0; 
-    border: 1.5px solid var(--powder-blue); 
+    background-color: #0f172a;
+    color: #e2e8f0;
+    border: 1.5px solid var(--powder-blue);
     border-radius: 6px;
     font-size: 0.85rem;
     transition: all 0.3s ease;
@@ -252,7 +312,7 @@ a { text-decoration: none; }
 
 .search-engine-dropdown:hover,
 .search-engine-dropdown:focus {
-    background-color: #1e293b; 
+    background-color: #1e293b;
     border-color: var(--light-blue)
 }
 
@@ -263,12 +323,12 @@ a { text-decoration: none; }
     background: var(--glassmorphism);
     border: 1px solid var(--glassmorphism-border);
     border-radius: 40px;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.5rem 0.4rem 1rem;
     backdrop-filter: blur(6px);
     box-shadow: 0 2px 6px var(--glassmorphism-shadow);
     transition: all 0.3s ease;
     margin-top: 1rem;
-    max-width: 100%; 
+    max-width: 100%;
 }
 
 .right-section .search-bar input.input {
@@ -300,10 +360,10 @@ a { text-decoration: none; }
 }
 
 .right-section .search-bar .search-btn i {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: whitesmoke;
     border-radius: 50%;
-    padding: 10px;
+    padding: 6px;
     transition: background-color 0.3s ease;
     background-size: cover;
 }
@@ -439,10 +499,10 @@ a { text-decoration: none; }
 /* ----- To-Do List Floating Panel ----- */
 .todo-panel {
     position: absolute;
-    top: 5rem; 
+    top: 4.5rem;
     left: 2rem;
     width: 300px;
-    background-color: var(--modal-bg);  
+    background-color: var(--modal-bg);
     border-radius: 1.5rem;
     padding: 1rem;
     z-index: 100;
@@ -557,4 +617,108 @@ a { text-decoration: none; }
     color: var(--light-blue);
     font-size: 1rem;
     cursor: pointer;
+}
+
+/* Pomodoro Timer Panel */
+.pomodoro-panel {
+    position: fixed;
+    top: 4.5rem;
+    right: 2rem;
+    background-color: var(--modal-bg);
+    color: var(--text-primary);
+    padding: 1rem;
+    border-radius: 1.5rem;
+    width: 300px;
+    z-index: 99;
+    box-shadow: 0 4px 15px var(--glassmorphism-shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--glassmorphism-border);
+}
+
+.pomodoro-panel h3 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    color: var(--powder-blue);
+}
+
+.timer-display {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.timer-controls button {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.75rem;
+    color: var(--light-blue);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 8px var(--glassmorphism-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timer-controls button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.03);
+}
+
+.timer-controls button:active {
+    transform: scale(0.97);
+}
+
+.pomodoro-settings {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pomodoro-settings label {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pomodoro-settings input {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    width: 5rem;
+}
+
+.pomodoro-settings button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    color: var(--text);
+    padding: 0.4rem 0.6rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.pomodoro-settings button:hover {
+    background-color: var(--icon-bg);
 }

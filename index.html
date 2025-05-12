@@ -15,9 +15,15 @@
     <main class="container">
         <!-- Section 1: Header (Top) -->
         <div class="header-section">
-            <span id="todoBtn" class="todo-btn">
+            <!-- To-Do List -->
+            <button id="todoBtn" class="todo-btn" title="To-Do List">
                 <i class="ri-list-check-2" title="To-Do List"></i>
-            </span>
+            </button>
+
+            <!-- Toggle Button -->
+            <button id="pomodoroToggle" class="pomodoro-toggle" title="Pomodoro Timer">
+                <i class="ri-timer-line"></i>
+            </button>
         </div>
 
         <!-- Section 2: Main Content (Middle) -->
@@ -125,6 +131,28 @@
             </ul>
         </div>
 
+        <!-- Pomodoro Timer Panel -->
+            <div id="pomodoroPanel" class="pomodoro-panel hidden">
+                <h3>Pomodoro Timer</h3>
+                <div class="timer-display" id="pomodoroTime"></div>
+                <div class="timer-controls">
+                    <button id="startBtn">Start</button>
+                    <button id="resetBtn">Reset</button>
+                    <button id="skipBreakBtn">Skip Break</button>
+                </div>
+                <div class="pomodoro-settings">
+                    <label>
+                        Work (min):
+                        <input type="number" id="workInput" value="25" min="1">
+                    </label>
+                    <label>
+                        Break (min):
+                        <input type="number" id="breakInput" value="5" min="1">
+                    </label>
+                    <button id="applyBtn">Apply</button>
+                </div>
+            </div>
+
     </main>
 
     <!-- Scripts -->
@@ -137,6 +165,7 @@
     <script type="module" src="scripts/config.js"></script>
     <script src="scripts/search.js"></script>
     <script src="scripts/todo.js"></script>
+    <script src="scripts/pomodoroTimer.js"></script>
 </body>
 
 </html>
