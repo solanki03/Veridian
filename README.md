@@ -52,9 +52,9 @@ Veridian is a productivity-focused Chrome extension that reimagines the new tab 
 
 **Built with 💙 by Solanki**
 
-[✉️ Gmail](solankisingha23@gmail.com) | 
-[🐙 GitHub](https://github.com/solanki03) |
-[💼 LinkedIn](https://www.linkedin.com/in/solankisingha) 
+✉️ [Gmail](solankisingha23@gmail.com) | 
+🐙 [GitHub](https://github.com/solanki03) |
+💼 [LinkedIn](https://www.linkedin.com/in/solankisingha) 
 
 ---
 

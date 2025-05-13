@@ -1,4 +1,5 @@
 import { showModal, hideModal } from "./modal.js";
+import { showAlert } from "./alert.js";
 
 const canvas = document.getElementById("lifeClock");
 const ctx = canvas.getContext("2d");
@@ -143,7 +144,7 @@ function setupModalEvents(endDate) {
             hideModal();
             handleGoalYear(endDate); // Rerun after setting new goal
         } else {
-            alert("Please enter a valid year between 2025 and 2100.");
+            showAlert("Please enter a valid year between 2025 and 2100.");
         }
     });
 

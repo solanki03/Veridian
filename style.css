@@ -192,6 +192,7 @@ a {
 }
 
 .left-section .time-left {
+    font-size: 1rem;
     font-weight: 500;
     color: var(--powder-blue);
     text-align: center;
