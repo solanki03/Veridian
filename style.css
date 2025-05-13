@@ -46,6 +46,28 @@ a {
     text-decoration: none;
 }
 
+/* custom alert */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(40, 40, 90, 0.95);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.custom-alert.fade-out {
+    opacity: 0;
+    transform: translateY(-50%, -20p);
+}
+
+
 /* ----- Section 1: Header ----- */
 .container .header-section {
     grid-area: header;
@@ -86,7 +108,7 @@ a {
     box-shadow: 0 0 8px var(--glassmorphism-shadow);
 }
 
-.header-section .todo-btn:hover::after{
+.header-section .todo-btn:hover::after {
     content: attr(title);
     position: absolute;
     left: -1rem;
@@ -505,7 +527,7 @@ a {
     background-color: var(--modal-bg);
     border-radius: 1.5rem;
     padding: 1rem;
-    z-index: 100;
+    z-index: 99;
     box-shadow: 0 4px 20px var(--glassmorphism-shadow);
     transition: all 0.3s ease;
     border: 1px solid var(--glassmorphism-border);
@@ -657,28 +679,48 @@ a {
     justify-content: center;
 }
 
+.timer-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
 .timer-controls button {
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
+    background-color: #1e293b;
+    color: var(--text-primary);
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 16px;
     font-weight: 500;
-    border: none;
-    border-radius: 0.75rem;
-    color: var(--light-blue);
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 2px 8px var(--glassmorphism-shadow);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .timer-controls button:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: scale(1.03);
+    background-color: #334155;
+    transform: translateY(-1px);
 }
 
 .timer-controls button:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
+}
+
+#startBtn {
+    border-left: 4px solid #3b82f6;
+}
+
+#pauseBtn {
+    border-left: 4px solid #f59e0b;
+}
+
+#resetBtn {
+    border-left: 4px solid #a2a4a9;
+}
+
+#skipBtn {
+    border-left: 4px solid #ef4444;
 }
 
 .pomodoro-settings {

@@ -1,9 +1,23 @@
+import { showAlert, vibrate } from "./alert.js";
+
+
+let isWorkSession = true;
+let timer = null;
+let remainingTime = 0;
+
+const defaultWorkMinutes = 25;
+const defaultBreakMinutes = 5;
+
+let workMinutes;
+let breakMinutes;
+
 const openPomodoroPanel = document.getElementById("pomodoroToggle");
 const pomodoroPanel = document.getElementById("pomodoroPanel");
 const timerDisplay = document.getElementById("pomodoroTime");
 const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
-const skipBreakBtn = document.getElementById("skipBreakBtn");
+const skipBtn = document.getElementById("skipBtn");
 const workInput = document.getElementById("workInput");
 const breakInput = document.getElementById("breakInput");
 const applyBtn = document.getElementById("applyBtn");
@@ -26,25 +40,14 @@ function saveSettings() {
 function loadSettings() {
     const saved = localStorage.getItem("pomodoro-settings");
     if (saved) {
-        const {work, break: brk} = JSON.parse(saved);
+        const { work, break: brk } = JSON.parse(saved);
         workMinutes = work;
         breakMinutes = brk;
     } else {
         workMinutes = defaultWorkMinutes;
-        breakMinutes =defaultBreakMinutes;
+        breakMinutes = defaultBreakMinutes;
     }
 }
-
-
-let isWorkSession = true;
-let timer = null;
-let remainingTime = 0;
-
-const defaultWorkMinutes = 25;
-const defaultBreakMinutes = 5;
-
-let workMinutes;
-let breakMinutes;
 
 // update timer text
 function updateDisplay(min, sec) {
@@ -63,6 +66,10 @@ function setTime(minutes) {
 function startTimer() {
     if (timer) return;   // prevent multiple intervals
 
+    if (remainingTime <= 0) {
+        remainingTime = (isWorkSession ? workMinutes : breakMinutes) * 60;
+    }
+
     timer = setInterval(() => {
         remainingTime--;
 
@@ -73,11 +80,37 @@ function startTimer() {
         if (remainingTime <= 0) {
             clearInterval(timer);
             timer = null;
-            // future: play sound here
-            alert(`${isWorkSession ? "Work session" : "Break"} completed!`);
+
+            if (isWorkSession) {
+                showAlert("Work session ended! Starting Break session...");
+                isWorkSession = false;
+
+                setTimeout(() => {
+                    setTime(breakMinutes);
+                    startTimer(); // auto-start break
+                }, 1000);
+            } else {
+                showAlert("Break session ended! Starting work session... ");
+                isWorkSession = true;
+                
+                setTimeout(() => {
+                    setTime(workMinutes);
+                    startTimer(); // auto-start next work session
+                }, 1000);
+            }
         }
     }, 1000);
 }
+
+// pause the timer
+pauseBtn.addEventListener("click", () => {
+    if (timer) {
+        clearInterval(timer);
+        timer = null;
+        showAlert("⏸️ Session paused.", "info", false);
+        vibrate();
+    }
+});
 
 // reset the timer
 function resetTimer() {
@@ -91,7 +124,14 @@ function skipSession() {
     clearInterval(timer);
     timer = null;
     isWorkSession = !isWorkSession;
-    setTime(isWorkSession ? workMinutes : breakMinutes);
+
+    if (isWorkSession) {
+        showAlert("⏭️ Break session skipped. Starting work...", "info", false);
+        setTime(workMinutes);
+    } else {
+        showAlert("⏭️ Work session skipped. Starting break...", "info", false);
+        setTime(breakMinutes);
+    }
 }
 
 loadSettings();  // load saved values
@@ -99,16 +139,16 @@ setTime(workMinutes);   // initialize the timer
 
 startBtn.addEventListener("click", startTimer);
 resetBtn.addEventListener("click", resetTimer);
-skipBreakBtn.addEventListener("click", skipSession);
+skipBtn.addEventListener("click", skipSession);
 
 // setting the input value of work & break time
 applyBtn.addEventListener("click", () => {
     const newWork = parseInt(workInput.value);
     const newBreak = parseInt(breakInput.value);
 
-    if(!isNaN(newWork) && newWork > 0) workMinutes = newWork;
-    if(!isNaN(newBreak) && newBreak > 0) breakMinutes = newBreak;
+    if (!isNaN(newWork) && newWork > 0) workMinutes = newWork;
+    if (!isNaN(newBreak) && newBreak > 0) breakMinutes = newBreak;
 
-    resetTimer(); 
+    resetTimer();
     saveSettings();
 });

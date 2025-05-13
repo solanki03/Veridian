@@ -1,4 +1,3 @@
-import { OPENWEATHER_API_KEY } from "./config.js";
 
 // fetching latitude and longitude using geolocation
 async function fetchWeatherData() {

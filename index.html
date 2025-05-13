@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="icons/star-logo.png" />
+    <link rel="icon" type="image/svg+xml" href="assets/icons/star-logo.png" />
     <title>Veridian - Grow Your Future</title>
     <link rel="stylesheet" href="style.css" />
     <!-- Remix Icon -->
@@ -137,8 +137,9 @@
                 <div class="timer-display" id="pomodoroTime"></div>
                 <div class="timer-controls">
                     <button id="startBtn">Start</button>
+                    <button id="pauseBtn">Pause</button>
                     <button id="resetBtn">Reset</button>
-                    <button id="skipBreakBtn">Skip Break</button>
+                    <button id="skipBtn">Skip</button>
                 </div>
                 <div class="pomodoro-settings">
                     <label>
@@ -165,7 +166,8 @@
     <script type="module" src="scripts/config.js"></script>
     <script src="scripts/search.js"></script>
     <script src="scripts/todo.js"></script>
-    <script src="scripts/pomodoroTimer.js"></script>
+    <script type="module" src="scripts/pomodoroTimer.js"></script>
+    <script type="module" src="scripts/alert.js"></script>
 </body>
 
 </html>
