@@ -1,3 +1,4 @@
+// Fetch weather data using wttr.in and location name from OpenStreetMap
 
 // fetching latitude and longitude using geolocation
 async function fetchWeatherData() {
@@ -22,27 +23,47 @@ async function fetchWeatherData() {
 // function to fetch and update UI
 async function fetchAndDisplayWeather(lat, lon) {
     try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=metric`;
-        const res = await fetch(url);
-        const data = await res.json();
+         // Fetch temperature from wttr.in
+        const url = `https://wttr.in/${lat},${lon}?format=j1`;
+        const tempRes = await fetch(url);
+        const data = await tempRes.json();
 
-        if (!data || !data.name || !data.main?.temp) {
-            throw new Error("Incomplete weather data.");
-        }
+        const temperature = data?.current_condition?.[0]?.temp_C + "°C";
 
+        // Fetch location name from OpenStreetMap
+        const location = await reverseGeocode(lat, lon);
+        
         const locationElement = document.getElementById("location");
         const temperatureElement = document.getElementById("temperature");
 
-        if (locationElement) {
-            locationElement.textContent = `${data.name}, ${data.sys?.country || ""}`;
-        }
-
-        if (temperatureElement) {
-            temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
-        }
+        if (locationElement) locationElement.textContent = location;
+        if (temperatureElement) temperatureElement.textContent = temperature;
 
     } catch (error) {
         console.error("Weather fetch failed:", error);
+    }
+}
+
+// Fetch human-readable location name
+async function reverseGeocode(lat, lon) {
+    try {
+        const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+        const res = await fetch(url, {
+            headers: {
+                'User-Agent': 'VeridianWeatherApp/1.0 '
+            }
+        });
+        const data = await res.json();
+
+        return (
+            data.address.city ||
+            data.address.state ||
+            data.display_name ||
+            "Unknown Location"
+        );
+    } catch (err) {
+        console.warn("Reverse geocoding failed:", err);
+        return "Unknown Location";
     }
 }
 
