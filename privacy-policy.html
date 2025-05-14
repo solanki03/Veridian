@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy – Veridian</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            color: #fff;
+            background-color: #0d1117;
+        }
+
+        h1,
+        h2 {
+            color: #58a6ff;
+        }
+
+        a {
+            color: #58a6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Privacy Policy</h1>
+    <p><strong>Effective Date:</strong> May 13, 2025</p>
+
+    <p><strong>Veridian</strong> is a Chrome extension designed to inspire personal growth through time tracking,
+        motivational tools, and productivity aids. Your privacy is important to us. This policy outlines what data we
+        use and how it’s handled.</p>
+
+    <h2>Data Collection</h2>
+    <ul>
+        <li><strong>Location:</strong> Your approximate location is used temporarily to display current weather. This is
+            done through your browser’s geolocation API and is not stored or transmitted to our servers.</li>
+        <li><strong>No Personal Info:</strong> Veridian does not collect, store, or share your name, email, or any
+            personally identifiable information.</li>
+        <li><strong>No Tracking:</strong> We do not use cookies, analytics, or any third-party trackers.</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>
+        Veridian uses public APIs like
+        <a href="https://wttr.in" target="_blank">wttr.in</a> for weather data,
+        <a href="https://nominatim.org" target="_blank">Nominatim</a> for location services, and
+        <a href="https://remixicon.com" target="_blank">Remix Icon</a> for icons used in shortcuts.
+        These services may have their own privacy policies and data handling practices.
+    </p>
+
+    <h2>Data Storage</h2>
+    <p>Data such as your goal date, task list, and Pomodoro settings are stored locally in your browser using
+        <code>localStorage</code>. This data never leaves your device.
+    </p>
+
+    <h2>Contact</h2>
+    <p>If you have questions or concerns about this policy, please reach out at <a
+            href="mailto:solankisingha23@gmail.com">solankisingha23@gmail.com</a>.</p>
+
+    <h2>Thank You</h2>
+    <p>
+        Thank you for using Veridian. Your trust means a lot. I’m committed to keeping this tool useful, respectful of
+        your data, and focused on your productivity.
+    </p>
+
+    <p class="copyright">&copy; <span id="currentYear"></span> Veridian. All rights reserved.</p>
+
+    <script>
+        const yearSpan = document.getElementById("currentYear");
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    </script>
+</body>
+
+</html>

@@ -4,19 +4,22 @@ Veridian is a productivity-focused Chrome extension that reimagines the new tab 
 
 ![Veridian Preview](assets/Veridian_UI.png) 
 
+🔴 🟡 🟢 **Test live:** https://solanki03.github.io/Veridian/
+
 ---
 
 
 ## 🚀 Features
 
-- 🕰️ **Life Countdown** – Visualize how much time you have left until your target goal year using animated concentric rings.
-- 📆 **Live Clock & Date** – Displays your current time and date.
-- 🌍 **Auto Location + Temperature** – Shows your approximate location and current temperature using a lightweight geolocation service.
-- 💬 **Motivational Quotes** – Fresh daily inspiration to keep your spirits high.
-- 🔗 **Quick Shortcuts** – Customizable links to your favorite sites.
-- ✅ **To-Do List** – Track your tasks directly in the tab.
-- ⏲️ **Pomodoro Timer** – Stay productive with customizable focus sessions.
-- ℹ️ **Info & Contact Modal** – Learn more about Veridian and find links to reach the creator.
+- **Life Countdown** – Visualize how much time you have left until your target goal year using animated concentric rings.
+- **Live Clock & Date** – Displays your current time and date.
+- **Auto Location + Temperature** – Shows your approximate location and current temperature using a lightweight geolocation service.
+- **Integrated Search** – Search directly from the New Tab using your preferred search engine — Google, DuckDuckGo, Bing, Brave Search.
+- **Motivational Quotes** – Fresh daily inspiration to keep your spirits high.
+- **Quick Shortcuts** – Predefined links to popular platforms like Gmail, YouTube, GitHub, X, and more.
+- **To-Do List** – Track your tasks directly in the tab.
+- **Pomodoro Timer** – Stay productive with customizable focus sessions.
+- **Info & Contact Modal** – Learn more about Veridian and find links to reach the creator.
 
 ---
 
@@ -26,6 +29,11 @@ Veridian is a productivity-focused Chrome extension that reimagines the new tab 
 - **Chrome Extensions API (Manifest V3)**
 - **Nominatim (OpenStreetMap)** – for reverse geolocation
 - **wttr.in** – for weather (no API key required)
+
+---
+
+## 🛡️ Privacy Policy
+Veridian respects your privacy. For more details, read our [Privacy Policy](https://solanki03.github.io/Veridian/privacy-policy.html).
 
 ---
 

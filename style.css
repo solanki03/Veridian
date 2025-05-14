@@ -858,3 +858,12 @@ a {
 .hidden {
     display: none;
 }
+
+.privacy-link a {
+    color: var(--powder-blue-dark);
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+.privacy-link a:hover {
+    text-decoration: none;
+}
